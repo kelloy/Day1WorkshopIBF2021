@@ -1,10 +1,10 @@
-package com;
+package shoppingcart;
 
 import java.io.Console;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ShoppingCart{
+public class Main {
     public static void main(String[] args) {
         Console cons = System.console();
         List<String> shoppingCart = new ArrayList<>();
