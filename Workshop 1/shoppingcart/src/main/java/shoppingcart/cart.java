@@ -4,39 +4,39 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class cart {
-    
-    private List<String> shoppinglist = new ArrayList<>();
 
-    public void addItem(String s) {
-        String[] stringOfArray = s.split("[\\s,]");
+    public List<String> addItem(List<String> list, String s) {
+        String[] stringOfArray = s.split(",");
         for (String item:stringOfArray){
-            if(!shoppinglist.contains(item)){
-                shoppinglist.add(item);
+            if(!list.contains(item)){
+                list.add(item);
                 System.out.println(item +" added");
             }
             else
             System.out.println("Item already in cart");
         }
+        return list;
     }
 
 
-    public void deleteItem(int i) {
+    public List<String> deleteItem(List<String> list, int i) throws NumberFormatException, IndexOutOfBoundsException {
         try{
-            if ((i-1)<shoppinglist.size() || (i-1) > shoppinglist.size()){
-        String itemremoved = shoppinglist.get(i-1);
+            if ((i-1)<list.size() || (i-1) > list.size()){
+        String itemremoved = list.get(i-1);
         System.out.printf("removed " + itemremoved +" from cart \n");
-        shoppinglist.remove(i-1);
+        list.remove(i-1);
         } else
         System.out.println("invalid index");
-        }catch (IndexOutOfBoundsException e){
-            System.out.println("invalid item index");
+        }catch (Exception e){
+            System.out.println("invalid item index and only integer");
         }
+        return list;
     }
 
-    public void getList(){
-        if (shoppinglist.size()>0){
-            for (int i = 0; i<shoppinglist.size();i++){
-            System.out.printf("%d.%s \n",(i+1),shoppinglist.get(i));
+    public void getList(List<String> list) {
+        if (list.size()>0){
+            for (int i = 0; i<list.size();i++){
+            System.out.printf("%d.%s \n",(i+1),list.get(i));
             }
         } else
         System.out.println("Your cart is empty");
